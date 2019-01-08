@@ -1,0 +1,318 @@
+{
+   "pages": [
+    {
+     "name": "Starting page",
+     "elements": [
+      {
+       "type": "text",
+       "name": "project_name",
+       "title": "What is the name of the project?",
+       "isRequired": true,
+       "placeHolder": "Project name"
+      },
+      {
+       "type": "text",
+       "name": "address",
+       "title": "Project location",
+       "popup": "yes",
+       "placeHolder": "Click on the map to set the location",
+       "isRequired": true,
+       "readOnly": true
+      },
+      {
+       "type": "dropdown",
+       "name": "project_type",
+       "title": "Wat is the type of the project?",
+       "defaultValue": "iwrm",
+       "hasOther": true,
+       "choices": [
+        {
+         "value": "watersector",
+         "text": "Water sector policy and governance"
+        },
+        {
+         "value": "iwrm",
+         "text": "Integrated water resources management, monitoring and protection"
+        },
+        {
+         "value": "capacitybuilding",
+         "text": "Water resources education and capacity building"
+        },
+        {
+         "value": "urban_watersupply",
+         "text": "Urban water supply, sanitation and waste (water) management"
+        },
+        {
+         "value": "rural_watersupply",
+         "text": "Rural water supply, sanitation and waste (water) management"
+        },
+        {
+         "value": "irrigation",
+         "text": "Agricultural water use and irrigation"
+        },
+        {
+         "value": "rbdm",
+         "text": "River basin development and management"
+        },
+        {
+         "value": "climatechange",
+         "text": "Flood prevention, climate change adaptation and disaster preparedness"
+        },
+        {
+         "value": "industry",
+         "text": "Industrial applications"
+        }
+       ]
+      },
+      {
+       "type": "dropdown",
+       "name": "bugdet",
+       "title": "What is the estimated project budget (euro)?",
+       "defaultValue": "100,000 - 500,000",
+       "choices": [
+        "< 100,000",
+        "100,000 - 500,000",
+        "> 500,000"
+       ]
+      }
+     ],
+     "title": "General information"
+    },
+    {
+     "name": "MainPage",
+     "elements": [
+      {
+       "type": "panel",
+       "name": "panel2",
+       "title": "Selection of Main Indicators"
+      },
+      {
+       "type": "radiogroup",
+       "name": "usegw",
+       "title": "Does the project use groundwater, or plan to do so?",
+       "defaultValue": "yes",
+       "isRequired": true,
+       "popup": "yes",
+       "choices": [
+        "yes",
+        "no"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "generates_waste",
+       "title": "Does the project generate waste that needs to be drained, discharged or treated?",
+       "defaultValue": "yes",
+       "isRequired": true,
+       "popup": "yes",
+       "choices": [
+        "yes",
+        "no"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "surface",
+       "title": "Does the project use or plan structures that slow or retain surface water? (i.e. dams, channel modifications)",
+       "defaultValue": "no",
+       "popup": "yes",
+       "isRequired": true,
+       "choices": [
+        "yes",
+        "no"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "landcover",
+       "title": "Will land cover change during or as a result of the project? (i.e. deforestation, crop change, urbanization)",
+       "defaultValue": "no",
+       "isRequired": true,
+       "popup": "yes",
+       "choices": [
+        "yes",
+        "no"
+       ]
+      }
+     ],
+     "visibleIf": "{bugdet} <> \"< 100,000\"",
+     "title": "Main characteristics"
+    },
+    {
+     "name": "Groundwater",
+     "elements": [
+      {
+       "type": "dropdown",
+       "name": "watersector",
+       "title": "In which sector will the groundwater be used?",
+       "defaultValue": "Drinking water",
+       "isRequired": true,
+       "choices": [
+        "Drinking water",
+        "Irrigation",
+        "Livestock",
+        "Industry"
+       ]
+      },
+      {
+       "type": "dropdown",
+       "name": "industry_type",
+       "visibleIf": "{watersector} = \"Industry\"",
+       "title": "Select type of industry",
+       "defaultValue": "Food",
+       "isRequired": true,
+       "hasOther": true,
+       "choices": [
+        {
+         "value": "Food",
+         "text": "Food production/processing"
+        },
+        "Cooling",
+        "Manufacturing",
+        "Washing"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "urbanrural",
+       "visibleIf": "{watersector} = \"Drinking\" or \n{watersector} = \"Irrigation\" or \n{watersector} = \"Livestock\" or\n({watersector} = \"Industry\" and {industry_type} = \"Food\")",
+       "title": "Is the water used in urban or rural areas?",
+       "defaultValue": "Urban",
+       "isRequired": true,
+       "choices": [
+        "Urban",
+        "Rural",
+        "Both"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "shallow_deep",
+       "visibleIf": "{watersector} <> \"Drinking\"",
+       "title": "Shallow or deep groundwater?",
+       "popup": "yes",
+       "defaultValue": "Deep",
+       "choices": [
+        "Shallow",
+        "Deep",
+        {
+         "value": "Both",
+         "text": "Don't know"
+        }
+       ]
+      }
+     ],
+     "visibleIf": "{usegw} = \"yes\" and {bugdet} <> \"< 100,000\"",
+     "title": "Groundwater use"
+    },
+    {
+     "name": "waste1",
+     "elements": [
+      {
+       "type": "dropdown",
+       "name": "waste_sector",
+       "title": "From which sector does the waste originate?",
+       "defaultValue": "Agriculture",
+       "isRequired": true,
+       "choices": [
+        "Agriculture",
+        "Livestock",
+        "Domestic",
+        "Industrial"
+       ]
+      },
+      {
+       "type": "dropdown",
+       "name": "waste_type",
+       "title": "What is the concerned type of waste?",
+       "defaultValue": "Liquid waste",
+       "isRequired": true,
+       "choices": [
+        "Solid waste",
+        "Sludge",
+        "Liquid waste"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "contamination_risk",
+       "visibleIf": "{waste_type} = \"Solid waste\" or {waste_type} = \"Sludge\"",
+       "title": "Is there a risk of contaminating the environment?",
+       "defaultValue": "yes",
+       "isRequired": true,
+       "choices": [
+        "yes",
+        "no"
+       ]
+      },
+      {
+       "type": "radiogroup",
+       "name": "treatment_plan",
+       "title": "Is there a plan for treatment and disposal?",
+       "defaultValue": "no",
+       "isRequired": true,
+       "choices": [
+        "yes",
+        "no"
+       ]
+      }
+     ],
+     "visibleIf": "{generates_waste} = \"yes\" and {bugdet} <> \"< 100,000\"",
+     "title": "Waste disposal"
+    },
+    {
+     "name": "landuse",
+     "elements": [
+      {
+       "type": "dropdown",
+       "name": "landuse_now",
+       "title": "What is the current land use?",
+       "isRequired": true,
+       "choices": [
+        "Forest",
+        "Grassland",
+        {
+         "value": "Rainfed",
+         "text": "Rainfed agriculture"
+        },
+        {
+         "value": "Irrigated",
+         "text": "Irrigated agriculture"
+        },
+        "Urban",
+        "Wetland",
+        "Bare"
+       ]
+      },
+      {
+       "type": "dropdown",
+       "name": "landuse_future",
+       "title": "What is the future land use?",
+       "isRequired": true,
+       "choices": [
+        "Forest",
+        "Grassland",
+        {
+         "value": "Rainfed",
+         "text": "Rainfed agriculture"
+        },
+        {
+         "value": "Irrigated",
+         "text": "Irrigated agriculture"
+        },
+        "Urban",
+        "Wetland",
+        "Bare"
+       ]
+      }
+     ],
+     "visibleIf": "{landcover} = \"yes\" and {bugdet} <> \"< 100,000\"",
+     "title": "Land use or land cover change"
+    }
+   ],
+   "sendResultOnPageNext": true,
+   "showQuestionNumbers": "off",
+   "showProgressBar": "bottom",
+   "startSurveyText": "Start questionnaire",
+   "requiredText": ""
+  }
