@@ -4,22 +4,6 @@
      "name": "Starting page",
      "elements": [
       {
-       "type": "text",
-       "name": "project_name",
-       "title": "What is the name of the project?",
-       "isRequired": true,
-       "placeHolder": "Project name"
-      },
-      {
-       "type": "text",
-       "name": "address",
-       "title": "Project location",
-       "popup": "yes",
-       "placeHolder": "Click on the map to set the location",
-       "isRequired": true,
-       "readOnly": true
-      },
-      {
        "type": "dropdown",
        "name": "project_type",
        "title": "Wat is the type of the project?",

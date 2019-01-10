@@ -9,11 +9,19 @@ export default new Vuex.Store({
       location: [20, 20],
       zoom: 3,
       center: [20, 20]
-    }
+    },
+    survey: undefined,
+    indicators: []
   },
   getters: {
     map: state => {
       return state.map
+    },
+    survey: state => {
+      return state.survey
+    },
+    indicators: state => {
+      return state.indicators
     },
     location: state => {
       return state.map.location
@@ -29,6 +37,12 @@ export default new Vuex.Store({
     map: (state, payload) => {
       state.map = payload
     },
+    survey: (state, payload) => {
+      state.survey = payload
+    },
+    indicators: (state, payload) => {
+      state.indicators = payload
+    },
     location: (state, payload) => {
       state.map.location = payload
     },
@@ -42,6 +56,12 @@ export default new Vuex.Store({
   actions: {
     map: (context, payload) => {
       context.commit('map', payload)
+    },
+    survey: (context, payload) => {
+      context.commit('survey', payload)
+    },
+    indicators: (context, payload) => {
+      context.commit('indicators', payload)
     },
     location: (context, payload) => {
       context.commit('location', payload)

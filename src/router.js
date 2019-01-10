@@ -6,10 +6,11 @@ import Survey from './views/Survey.vue'
 import Results from './views/Results.vue'
 import Export from './views/Export.vue'
 import Feedback from './views/Feedback.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -37,6 +38,34 @@ export default new Router({
       path: '/export',
       name: 'export',
       component: Export
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['login', 'home']
+  const authRequired = !publicPages.includes(to.name)
+  // console.debug('path ', to)
+  // console.debug('authRequired: ', authRequired)
+  if (authRequired) {
+    const token = sessionStorage.getItem('token')
+    // TODO: verify token
+    if (!token) {
+      // console.debug('restricted: ' + to.fullPath)
+      // console.debug('redirecting to /login?nextUrl=' + to.fullPath)
+      return next({
+        path: '/login',
+        query: { next: to.fullPath }
+      })
+    }
+  }
+  next()
+})
+
+export default router
