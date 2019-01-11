@@ -10,7 +10,7 @@
         <Map :layers="layers"/>
       </b-col>
     </b-row>
-    <b-modal id="myModal" ref="myModal" :title="popup.title" hide-footer ok-variant="info" ok-title="Close">
+    <b-modal id="myModal" ref="myModal" :title="popup.title" hide-footer>
       <div>
         <p v-html="popup.content"></p>
       </div>
@@ -90,7 +90,11 @@ export default {
                   })
               }
               vm.popup = popup
-              vm.$refs.myModal.show()
+              let modal = vm.$refs.myModal
+              if (modal) {
+                // when page is revisited, modal is undefined ?!
+                modal.show()
+              }
             }
             btn.innerHTML = 'info'
             anchor.appendChild(btn)

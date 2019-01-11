@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import Home from './views/Home.vue'
 import Survey from './views/Survey.vue'
-import Results from './views/Results.vue'
+import ResultsPage from './views/ResultsPage.vue'
 import Export from './views/Export.vue'
 import Feedback from './views/Feedback.vue'
 import Login from './views/Login.vue'
@@ -27,7 +27,7 @@ let router = new Router({
     {
       path: '/results',
       name: 'results',
-      component: Results
+      component: ResultsPage
     },
     {
       path: '/feedback',

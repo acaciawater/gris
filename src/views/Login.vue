@@ -9,8 +9,7 @@
             required
             v-model="username"
             type="text"
-            placeholder="username"
-          >
+            placeholder="username">
         </b-form-group>
         <b-form-group>
           <b-input-group>
@@ -21,10 +20,9 @@
                 required
                 v-model="password"
                 type="text"
-                placeholder="password"
-              />
+                placeholder="password"/>
               <span title="Hide password" v-on:click="togglePasswordVisibility">
-                <fa-icon id="eye" icon="eye-slash" scale="1.5"/>
+                <fa-icon id="eye" icon="eye-slash"/>
               </span>
             </template>
             <template v-else>
@@ -35,10 +33,9 @@
                 v-model="password"
                 type="password"
                 placeholder="password"
-                autocomplete="on"
-              />
+                autocomplete="on"/>
               <span title="Show password" v-on:click="togglePasswordVisibility">
-                <fa-icon id="eye" icon="eye" scale="1.5"/>
+                <fa-icon id="eye" icon="eye"/>
               </span>
             </template>
           </b-input-group>

@@ -1,15 +1,15 @@
 <template>
-  <l-map
-    ref="map"
-    :zoom="zoom"
-    :minZoom="2"
-    :center="center"
-    @update:zoom="updateZoom"
-    @update:center="updateCenter"
-    @click="setMarker">
-    <l-marker :visible="true" :draggable="true" :lat-lng="location" @dragend="moveMarker">
-    </l-marker>
-  </l-map>
+    <l-map
+      ref="map"
+      :zoom="zoom"
+      :minZoom="2"
+      :center="center"
+      @update:zoom="updateZoom"
+      @update:center="updateCenter"
+      @click="setMarker">
+      <l-marker :visible="true" :draggable="true" :lat-lng="location" @dragend="moveMarker">
+      </l-marker>
+    </l-map>
 </template>
 
 <script>

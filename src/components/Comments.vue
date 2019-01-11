@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h2>{{title}}</h2>
-        <hr class="col-xs-12">
+        <!-- <h2>{{title}}</h2> -->
+        <!-- <hr class="col-xs-12"> -->
         <ul>
             <li v-for="(comment,index) in comments" :key="index+1">{{comment}}</li>
         </ul>

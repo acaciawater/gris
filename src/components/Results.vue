@@ -1,65 +1,64 @@
 <template>
-  <b-container fluid id="results" class="h-100">
-    <b-row class="h-100">
-      <b-col cols="5">
-        <h2><span>Results<fa-icon v-if="comments.length>0" class="warning" icon="exclamation-circle" pull="right" size="xs"></fa-icon></span></h2>
-        <div v-if="survey">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Indicator</th>
-                <th>Risk</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <Indicator
-                v-for="(source,index) in indicators"
-                :source="source"
-                :position="position"
-                :key="index+1"
-                v-show="source.selected"
-                :popup="showModal"
-              ></Indicator>
-            </tbody>
-          </table>
-          <Comments :comments="comments" :title="title"></Comments>
-        </div>
-        <div v-else>
-          <p>Please complete the survey before requesting results.</p>
-        </div>
-      </b-col>
-      <b-col cols="7">
-        <Map :layers="layers" />
-      </b-col>
-    </b-row>
+  <div>
+    <h2>
+      <span>
+        Results
+        <fa-icon v-show="popover && comments.length > 0" id="exclamation" class="warning" icon="exclamation-circle" pull="right" size="xs"></fa-icon>
+      </span>
+    </h2>
+    <div v-if="survey">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Indicator</th>
+            <th>Risk</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Indicator
+            v-for="(source,index) in indicators"
+            :source="source"
+            :position="position"
+            :key="index+1"
+            v-show="source.selected"
+            :popup="showModal"
+          ></Indicator>
+        </tbody>
+      </table>
+      <Comments v-if="!popover" :comments="comments" :title="title"></Comments>
+    </div>
+    <div v-else>
+      <p>Please complete the survey before requesting results.</p>
+    </div>
     <b-modal
       id="modalPopup"
       ref="modalPopup"
       :title="popup.title"
-      ok-variant="info"
-      ok-title="Close">
+      hide-footer>
       <div>
         <p v-html="popup.content"></p>
       </div>
     </b-modal>
-  </b-container>
+    <b-popover target="exclamation" triggers="hover">
+      <template slot="title"><h3>{{title}}</h3></template>
+      <Comments :comments="comments" :title="''"></Comments>
+    </b-popover>
+  </div>
 </template>
 
 <script>
-import Map from '@/components/Map.vue'
-import layers from '@/assets/resultlayers.json'
+
 import Indicator from '@/components/Indicator.vue'
 import luChange from '@/assets/luchange.json'
 import Comments from '@/components/Comments.vue'
 
 export default {
   name: 'Results',
-  components: { Map, Indicator, Comments },
-
+  components: { Indicator, Comments },
+  props: { popover: { default: true } },
   data () {
     return {
-      layers: layers, // layers on the map
       indicators: [], // todo: move to store
       comments: [], // comments at end of indicator list
       title: 'Remarks', // title for comments section
@@ -125,7 +124,7 @@ export default {
           const indicators = response.data
           this.$store.dispatch('indicators', indicators)
           this.indicators = indicators
-          console.debug(indicators.map(indicator => indicator.name))
+          // console.debug(indicators.map(indicator => indicator.name))
           return indicators
         })
     },
@@ -209,9 +208,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .warning {
   color: red;
   margin-top: 0.3em;
+}
+.popover {
+  max-width: 600px !important;
 }
 </style>
