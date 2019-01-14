@@ -190,16 +190,16 @@ export default {
         // console.log(lu1, lu2)
         let effect = this.landuseChange(lu1, lu2, 'Quantity')
         // console.log('Recharge:', effect)
-        if (effect) {
+        if (effect > 0) {
           indicators.add('Recharge')
           indicators.add('Groundwater stress')
           this.comments.push('Replenishment of groundwater resources is expected to decrease as a result of the planned change in land cover. This risk can be mitigated by implementing managed aquifer recharge measures')
         }
         effect = this.landuseChange(lu1, lu2, 'Quality')
         // console.log('Quality:', effect)
-        if (effect) {
+        if (effect > 0) {
           indicators.add('Groundwater vulnerability')
-          this.comments.push('Surface water quality is expected to impacted as a result of the planned change in land cover. This can have a negative impact on groundwater quality, especially in areas where the groundwater is vulnerable (see groundwater vulnerability indicator')
+          this.comments.push('Surface water quality is expected to be impacted as a result of the planned change in land cover. This can have a negative impact on groundwater quality, especially in areas where the groundwater is vulnerable (see groundwater vulnerability indicator')
         }
       }
       return indicators
