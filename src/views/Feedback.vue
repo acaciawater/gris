@@ -1,7 +1,7 @@
 <template>
   <b-container fluid id="wrapper">
     <div class="row">
-        <h3 class="col-6">Send Feedback</h3>
+        <h3 class="col-6 mb-4">Send Feedback</h3>
     </div>
     <div class="row">
       <b-form class="form col-6" @submit.prevent="sendFeedback">
@@ -28,12 +28,12 @@
               :max-rows="20"/>
           </div>
           <div class="p-2">
-            <b-button class="btn btn-info" type="submit">Send</b-button>
+            <b-button class="btn btn-success" type="submit">Send</b-button>
           </div>
         </b-form-group>
       </b-form>
     </div>
-    <div class="row">
+    <div class="row mt-1">
         <div class="col-6">{{resultMessage}}</div>
     </div>
   </b-container>
@@ -75,14 +75,24 @@ export default {
 <style>
 .form {
   width: 400px;
-  background-color: rgb(228, 233, 206);
+  background-color: #f4f7f8;
+  border-radius: 8px;
+  padding: 10px 20px 10px 10px;
 }
 #wrapper {
   position: relative;
   top: 10%;
   left: 25%;
 }
+.form-control {
+  background-color: #e8eeef !important;
+}
 label {
   font-weight: bold;
+}
+.form-control:focus {
+  border-color: rgba(104, 233, 145, 0.67) !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(180, 239, 193, 0.53) !important;
+  outline: 0 none !important;
 }
 </style>

@@ -10,7 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faPollH, faFileAlt, faEnvelope, faFilePdf, faExclamationCircle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faPollH, faFileAlt, faEnvelope, faFilePdf, faExclamationCircle, faEye, faEyeSlash, faSave } from '@fortawesome/free-solid-svg-icons'
 
 import L from 'leaflet'
 import axios from 'axios'
@@ -25,7 +25,8 @@ library.add(
   faEnvelope,
   faExclamationCircle,
   faEye,
-  faEyeSlash
+  faEyeSlash,
+  faSave
 )
 Vue.component('fa-icon', FontAwesomeIcon)
 

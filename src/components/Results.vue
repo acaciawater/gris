@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>
+    <h2 class="mt-3">
       <span>
         Results
         <fa-icon v-show="popover && comments.length > 0" id="exclamation" class="warning" icon="exclamation-circle" pull="right" size="xs"></fa-icon>

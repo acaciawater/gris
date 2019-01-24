@@ -2,7 +2,7 @@
   <b-container fluid id="survey" class="h-100">
     <b-row class="h-100">
       <b-col cols="4">
-        <h2>Survey</h2>
+        <h2 class="mt-3">Survey</h2>
         <survey :survey="survey"></survey>
       </b-col>
       <b-col cols="8">

@@ -7,6 +7,7 @@ import ResultsPage from './views/ResultsPage.vue'
 import Export from './views/Export.vue'
 import Feedback from './views/Feedback.vue'
 import Login from './views/Login.vue'
+import Save from './views/Save.vue'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/save',
+      name: 'save',
+      component: Save
     }
   ]
 })

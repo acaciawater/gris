@@ -2,6 +2,7 @@
   <b-container class="h-100">
     <div class="row justify-content-center align-items-center h-100">
       <b-form @submit.prevent="obtain">
+        <b-form-group v-if="serverError" class="server-error text-center">{{ serverError }}</b-form-group>
         <b-form-group>
           <input
             class="form-control form-control-lg"
@@ -54,7 +55,7 @@ export default {
   name: 'Login',
 
   data () {
-    return { username: '', password: '', token: '', passwordVisible: false }
+    return { username: '', password: '', token: '', passwordVisible: false, serverError: '' }
   },
 
   methods: {
@@ -107,6 +108,7 @@ export default {
           sessionStorage.removeItem('token')
           sessionStorage.removeItem('user')
           console.debug('login failed: ' + JSON.stringify(err.response.data))
+          this.serverError = err.response.data.non_field_errors[0]
         })
     }
   }
@@ -120,4 +122,13 @@ export default {
   top: 12px;
   z-index: 999;
 }
+.server-error {
+  font-size: 16px;
+  font-weight: 400;
+  color: red;
+  width: 100%;
+}
+  .form-control {
+    min-width: 400px;
+  }
 </style>

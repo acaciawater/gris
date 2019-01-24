@@ -153,6 +153,8 @@ export default {
           if (result.status < 400) {
             const location = result.data.results[0]
             this.address = location ? location.formatted_address : ''
+            localStorage.setItem('googleLocation', JSON.stringify(location.address_components));
+            console.log(location.address_components)
           } else {
             this.address = ''
           }
