@@ -25,14 +25,14 @@
 </template>
 
 <script>
-  export default {
-      name: 'app',
-      computed: {
-        survey() {
-          return this.$store.state.survey
-        }
-      }
+export default {
+  name: 'app',
+  computed: {
+    survey () {
+      return this.$store.state.survey
+    }
   }
+}
 </script>
 
 <style>
