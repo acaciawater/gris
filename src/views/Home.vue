@@ -19,13 +19,24 @@
       </b-row>
       <hr/>
       <b-row>
-        <h1>Groundwater Impact Scan</h1>
-        <p>Groundwater is by far the largest source of fresh water available for human use, providing drinking water, irrigation, and water for industry. Demand for fresh water is increasing globally due to population growth and economic development, making sustainable use of groundwater resources more important than ever.</p>
-        <p>The Groundwater Impact Scan was developed by the Netherlands Enterprise Agency and Acacia Water to increase awareness of the potential impacts development aid projects can have on groundwater resources. </p>
-        <p>The tool is based on a questionnaire and a selection of global datasets related to groundwater availability and quality. The questionnaire is designed to be simple and easy to use, and can be completed within minutes. The Groundwater Impact Scan helps project managers, evaluators and the general public gain insight into the groundwater-related risks associated with a particular project in a particular location. These insights can be used to plan and prioritize risk mitigation measures.</p>
-        <p>The Groundwater Impact Scan is a first step towards assessing risks to groundwater resources. The tool has been launched as an exploratory beta version so users can provide feedback at an early stage. The feedback will be used to plan future developments of the tool.</p>
+        <p>Netherlands Enterprise Agency (RVO.nl) administers many projects in the international domain. A full overview can be accessed via <a href="https://aiddata.rvo.nl">aiddata.rvo.nl</a>. Many of these projects rely on groundwater sources, especially the agriculture projects. RVO wants to stimulate discussions on incorporating groundwater assessments in the business approaches and to contribute to relevant awareness raising. Under the support programme of the Sustainable Water Fund (FDW), Acacia Water has been contracted by RVO.nl to develop a Rapid Assessment Groundwater Tool.</p>
+        <h5>Rationale</h5>
+        <p>Worldwide the agriculture sector consumes approximately 70% of fresh water sources. Industry and household consumption are good for 15% each. Over half of the fresh water supply is being extracted from groundwater sources. Fresh water is becoming a scarce resource. Water availability assessments are becoming more important every day for business sustainability in both agriculture and industry. But important groundwater data is lacking and risk assessments based on water availability are not easy to make. Hence, groundwater assessments in relation to business sustainability is often not carried out.</p>
+        <h5>Groundwater Tool</h5>
+        <p>This tool is a first but very practical step to get insight in a risk model for businesses making use of groundwater sources at regional scale. It can also easily be applied to any project of program development in which groundwater will play a role. It’s thus explicitly not only meant for the private sector but also for public sector agents who can use the tool for their plan making including plans on water allocation and water management.</p>
+        <h5>Pilot</h5>
+        <p>The tool has reached its pilot stage. The tool is currently based on global datasets, and though every effort has been made to use the best-available datasets, they may contain inaccuracies. Therefore, we would like to invite you to try the tool and give us feedback by using the feedback form embedded in the tool. We asked a limited amount of public and private organizations to share their feedback with Acacia Water and RVO.nl during 2019. We will use the feedback to develop an improved version of the tool to be widely released in January 2020.</p>
       </b-row>
-      <router-link class="btn btn-success btn-lg btn-block col-2 mx-auto" type="button" to="/survey">Start scan</router-link>
+      <b-row>
+        <b-col class="px-0 signature" >
+        Mr Michel de Zwart</br>
+        Senior Advisor Global Public Goods / Water Division</br>
+        Netherlands Enterprise Agency
+        </b-col>
+        <b-col>
+        <router-link class="btn float-right btn-success btn-lg" type="button" to="/survey">Start scan</router-link>
+        </b-col>
+    </b-row>
     </b-container>
   </div>
 </template>
@@ -38,19 +49,22 @@ export default {
 </script>
 
 <style scoped>
+.signature {
+  font-size: small;
+}
 .home {
   position: relative;
-  top: 10em;
+  top: 8em;
 }
 
 #hnav {
   height: 8em;
   width: 100%;
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  top: 0; /* Stay at the top */
+  position: absolute;
+  top: 0;
   left: -1em;
   background-color: white;
-  overflow-y: hidden;
+  overflow: hidden;
   padding: 0;
 }
 
