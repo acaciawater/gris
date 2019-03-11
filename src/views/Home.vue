@@ -30,15 +30,8 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="signature">
-          Mr Michel de Zwart<br>
-          Senior Advisor Global Public Goods / Water Division<br>
-          Netherlands Enterprise Agency
-        </b-col>
-        <b-col>
-          <router-link class="btn float-right btn-success btn-lg" type="button" to="/survey">Start scan</router-link>
-        </b-col>
-    </b-row>
+          <router-link class="btn btn-success btn-block col-2 mx-auto btn-lg" type="button" to="/survey">Start scan</router-link>
+      </b-row>
     </b-container>
   </div>
 </template>
