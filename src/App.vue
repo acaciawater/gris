@@ -63,6 +63,18 @@ body,
   padding-top: 10px;
 }
 
+/* horizontal navbar */
+#hnav {
+  height: 8em;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: -1em;
+  background-color: white;
+  overflow: hidden;
+  padding: 0;
+}
+
 .navitem {
   display: block;
   color: rgb(122, 206, 136);
