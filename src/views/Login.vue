@@ -1,6 +1,7 @@
 <template>
-  <b-container class="h-100">
-    <div class="row justify-content-center align-items-center h-100">
+  <b-container  class="d-flex justify-content-center align-items-center h-100">
+    <div>
+      <h3 class="caption">Login</h3>
       <b-form @submit.prevent="obtain">
         <b-form-group v-if="serverError" class="server-error text-center">{{ serverError }}</b-form-group>
         <b-form-group>
@@ -43,6 +44,8 @@
         </b-form-group>
         <b-form-group>
           <b-button class="btn btn-info btn-lg btn-block" type="submit">Login</b-button>
+          <a href="/signup" class="float-left">Register</a>
+          <!-- <a href="" class="float-right">Forgot password</a> -->
         </b-form-group>
       </b-form>
     </div>
@@ -56,6 +59,10 @@ export default {
 
   data () {
     return { username: '', password: '', token: '', passwordVisible: false, serverError: '' }
+  },
+
+  mounted () {
+    this.username = sessionStorage.getItem('user')
   },
 
   methods: {
@@ -102,7 +109,11 @@ export default {
           // console.debug("login succeeded: " + response.statusText);
           // console.debug("query: " + JSON.stringify(this.$route.query));
           let nextUrl = this.$route.query.next
-          if (nextUrl != null) { this.$router.push(nextUrl) }
+          if (nextUrl != null) {
+            this.$router.push(nextUrl)
+          } else {
+            this.$router.push({ name: 'home' })
+          }
         })
         .catch(err => {
           sessionStorage.removeItem('token')
