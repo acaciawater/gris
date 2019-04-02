@@ -39,7 +39,8 @@ L.Icon.Default.mergeOptions({
 })
 // end of marker code
 
-axios.defaults.baseURL = 'https://rat.acaciadata.com'
+// axios.defaults.baseURL = 'https://rat.acaciadata.com'
+axios.defaults.baseURL = 'http://localhost:8000'
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
