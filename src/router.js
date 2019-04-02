@@ -7,6 +7,7 @@ import ResultsPage from './views/ResultsPage.vue'
 import Export from './views/Export.vue'
 import Feedback from './views/Feedback.vue'
 import Login from './views/Login.vue'
+import Signup from './views/Signup.vue'
 import Save from './views/Save.vue'
 
 Vue.use(Router)
@@ -46,6 +47,11 @@ let router = new Router({
       component: Login
     },
     {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
+    },
+    {
       path: '/save',
       name: 'save',
       component: Save
@@ -55,7 +61,7 @@ let router = new Router({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['login', 'home']
+  const publicPages = ['login', 'signup', 'home']
   const authRequired = !publicPages.includes(to.name)
   // console.debug('path ', to)
   // console.debug('authRequired: ', authRequired)
